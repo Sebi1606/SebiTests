@@ -1,5 +1,4 @@
- //Das ist mein erstes Arbeiten mit GitHub!
- console.log("Mein erstes Mal arbeiten mit Github");
+console.log("Mein erstes Mal arbeiten mit Github");
 let count = 0;
 for (let i = 0; i < 100; i++){
     if (isPrimeNumber(i)){
@@ -7,20 +6,27 @@ for (let i = 0; i < 100; i++){
     }
 };
 
-function isPrimeNumber(number){};
-
-function countPrimeNumber(limit){
-    let number1 = 1;
-    let number2 = 2;
-    let array = [];
-    let result = number1 +number2;
-    while ((result = (number1 + number2) % number2) <= limit){
-        if (result !== 0){
-            return result;
+//Überprüft, ob die Zahl kleiner oder gleich 1 ist (solche Zahlen sind keine Primzahlen).
+//Prüft dann, ob die Zahl durch irgendeine Zahl von 2 bis zur Quadratwurzel der Zahl teilbar ist.
+//Wenn sie teilbar ist, ist sie keine Primzahl.
+//Wenn sie durch keine dieser Zahlen teilbar ist, ist sie eine Primzahl.
+function isPrimeNumber(number){
+    if (number <= 1){
+        return false;
+    };
+    for (let i = 2; i <= Math.sqrt(number); i++){
+        if (number % i === 0) {
+            return false;
         };
-        if (result === 0){
-            return faslse;
-        };
+    };
+    return true;
+};
 
+//Die Schleife läuft von 0 bis 100.
+//Für jede Zahl wird die Funktion isPrimeNumber aufgerufen.
+//Wenn die Zahl eine Primzahl ist, wird sie mit console.log ausgegeben.
+for (let i = 0; i <= 100; i++){
+    if (isPrimeNumber(i)){
+        console.log(i);
     };
 };
