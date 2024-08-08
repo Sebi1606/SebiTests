@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .header h1 {
+    color: #ffffff;
+  }
+  
+  .header h2 {
+    color: #b0b0b0;
+  }
+  
+  .header p {
+    font-style: italic;
+    color: #909090;
+  }
+  
+  .topic {
+    background: linear-gradient(145deg, #1e1e1e, #282828);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .topic h2 {
+    color: #ffffff;
+    border-bottom: 2px solid #0099ff;
+    padding-bottom: 10px;
+  }
+  
+  .input-field {
+    background-color: #333333;
+    color: #e0e0e0;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #555555;
+    border-radius: 4px;
+  }
+  
+  .matrix-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .matrix-container div {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .matrix {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .matrix-row {
+    display: flex;
+  }
+  
+  .matrix-input {
+    background-color: #333333;
+    color: #e0e0e0;
+    padding: 5px;
+    border: 1px solid #555555;
+  border-radius: 4px;
+  width: 50px;
+  text-align: center;
+}
+
+.button-small {
+  background: linear-gradient(145deg, #007acc, #005bb5);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.button-small:hover {
+  background: linear-gradient(145deg, #005bb5, #003f80);
+}
+
+.button {
+  background: linear-gradient(145deg, #007acc, #005bb5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: linear-gradient(145deg, #005bb5, #003f80);
+}
+
+.result {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.prime-item {
+  padding: 5px;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+.prime-item.even {
+  background-color: #333333;
+}
+
+.prime-item.odd {
+  background-color: #1e1e1e;
+}
