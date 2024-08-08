@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning JS</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="scripts/script.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>JS - Learning by doing</h1>
+      <h2>Important</h2>
+      <p>Rule #1: Coders are lazy. Never code twice!</p>
+      <p>Rule #2: Nevernester - never more than 2 tabs!</p>
+      <p>Rule #3: Use good naming</p>
+    </div>
+    <div class="topic">
+      <h2>Primzahlenrechner</h2>
+      <input
+        type="number"
+        step="1"
+        id="prime-max"
+        value="100"
+        class="input-field"
+      />
+      <button onclick="primeNumbersOnclick()" class="button">
+        Berechne Primzahlen
+      </button>
+      <div id="primes" class="result"></div>
+    </div>
+    <div class="topic">
+      <h2>Vektorrechner</h2>
+      <input type="text" id="vector-a" class="input-field" />
+      <select id="vector-operator" class="input-field">
+        <option value="+">Addition</option>
+        <option value="-">Subtraction</option>
+        <option value="*">Multiplication</option>
+        <option value="/">Division</option>
+      </select>
+      <input type="text" id="vector-b" class="input-field" />
+      =<span id="vector-result" class="result"></span>
+      <br />
+      <button onclick="vectorOnclick()" class="button">Calculate</button>
+    </div>
+    <div class="topic">
+      <h2>Matrixrechner</h2>
+      <div class="matrix-container">
+        <div>
+          <h3>Matrix A</h3>
+          <div id="matrix-a-container" class="matrix"></div>
+          <button onclick="addRow('matrix-a-container')" class="button-small">
+            Add Row
+          </button>
+          <button onclick="addCol('matrix-a-container')" class="button-small">
+            Add Col
+          </button>
+          <button
+            onclick="removeRow('matrix-a-container')"
+            class="button-small"
+          >
+            Remove Row
+          </button>
+          <button
+            onclick="removeCol('matrix-a-container')"
+            class="button-small"
+          >
+            Remove Col
+          </button>
+        </div>
+        <div>
+          <h3>Matrix B</h3>
+          <div id="matrix-b-container" class="matrix"></div>
+          <button onclick="addRow('matrix-b-container')" class="button-small">
+            Add Row
+          </button>
+          <button onclick="addCol('matrix-b-container')" class="button-small">
+            Add Col
+          </button>
+          <button
+            onclick="removeRow('matrix-b-container')"
+            class="button-small"
+          >
+            Remove Row
+          </button>
+          <button
+            onclick="removeCol('matrix-b-container')"
+            class="button-small"
+          >
+            Remove Col
+          </button>
+        </div>
+      </div>
+      <select id="matrix-operator" class="input-field">
+        <option value="vector-multiplication">Vector Multiplication</option>
+        <option value="scalar-multiplication">Scalar Multiplication</option>
+        <option value="cross-product">Cross Product</option>
+      </select>
+      <button onclick="matrixOnclick()" class="button">Calculate</button>
+      <div id="matrix-result" class="result"></div>
+    </div>
+  </body>
+  <script>
+    function primeNumbersOnclick() {
+      const primMax = parseInt(document.getElementById("prime-max").value);
+      const primNumbers = calculatePrimeNumbers(primMax);
+      const primes = document.getElementById("primes");
+      primes.innerHTML = "";
+      let i = 1;
+      for (const primNumber of primNumbers) {
+        primes.innerHTML += `<div class="prime-item ${
+          i % 2 === 0 ? "even" : "odd"
+        }">#${i++}: ${primNumber}</div>`;
+      }
+    }
+
+    function vectorOnclick() {
+      const a = document.getElementById("vector-a").value;
+      const operation = document.getElementById("vector-operator").value;
+      const b = document.getElementById("vector-b").value;
+      document.getElementById("vector-result").innerText =
+        "(" + calculateVectors(a, operation, b) + ")";
+    }
+
+    function matrixOnclick() {
+      const matrixA = getMatrix("matrix-a-container");
+      const matrixB = getMatrix("matrix-b-container");
+      const operation = document.getElementById("matrix-operator").value;
+
+      const resultMatrix = calculateMatrix(matrixA, operation, matrixB);
+      displayMatrixResult(resultMatrix);
+    }
+
+    function getMatrix(containerId) {
+      const container = document.getElementById(containerId);
+      const rows = container.getElementsByClassName("matrix-row");
+      const matrix = [];
+      for (const row of rows) {
+        const inputs = row.getElementsByTagName("input");
+        const rowData = [];
+        for (const input of inputs) {
+          rowData.push(Number(input.value));
+        }
+        matrix.push(rowData);
+      }
+      return matrix;
+    }
+
+    function addRow(containerId) {
+      const container = document.getElementById(containerId);
+      const rows = container.getElementsByClassName("matrix-row");
+      const colCount =
+        rows.length > 0 ? rows[0].getElementsByTagName("input").length : 1;
+
+      const newRow = document.createElement("div");
+      newRow.className = "matrix-row";
+      for (let i = 0; i < colCount; i++) {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.className = "matrix-input";
+        newRow.appendChild(input);
+      }
+      container.appendChild(newRow);
+    }
+
+    function addCol(containerId) {
+      const container = document.getElementById(containerId);
+      const rows = container.getElementsByClassName("matrix-row");
+
+      for (const row of rows) {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.className = "matrix-input";
+        row.appendChild(input);
+      }
+    }
+
+    function removeRow(containerId) {
+      const container = document.getElementById(containerId);
+      const rows = container.getElementsByClassName("matrix-row");
+      if (rows.length > 0) {
+        container.removeChild(rows[rows.length - 1]);
+      }
+    }
+
+    function removeCol(containerId) {
+      const container = document.getElementById(containerId);
+      const rows = container.getElementsByClassName("matrix-row");
+
+      for (const row of rows) {
+        const inputs = row.getElementsByTagName("input");
+        if (inputs.length > 0) {
+          row.removeChild(inputs[inputs.length - 1]);
+        }
+      }
+    }
+
+    function displayMatrixResult(resultMatrix) {
+      const resultDiv = document.getElementById("matrix-result");
+      resultDiv.innerHTML = "<h3>Result</h3>";
+      resultMatrix.forEach((row) => {
+        resultDiv.innerHTML += `<div>${row.join(", ")}</div>`;
+      });
+    }
+  </script>
+</html>
