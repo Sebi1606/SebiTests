@@ -1,3 +1,5 @@
+//Challenge 1: Primzahlrechner:
+
 function calculatePrimeNumbers(limit) {
   let count = 0;
   let primeNumbers = [];
@@ -22,10 +24,14 @@ function isPrimeNumber(number){
   return true;
 }
 
+//Challenge 2: Vektorrechner:
+
 function calculateVectors(vectorA, operation, vectorB) {
   console.log(vectorA, operation, vectorB);
   return [1, 2, 3, 4];
 }
+
+//Challenge 3: Matrixrechner:
 
 function calculateMatrix(matrixA, operation, matrixB) {
   console.log(matrixA, operation, matrixB);
