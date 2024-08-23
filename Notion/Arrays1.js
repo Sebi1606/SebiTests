@@ -13,6 +13,6 @@ console.log(array);
 sum(array);
 
 function sum(array){
-    let summe = array.reduce((accumulator, currenValue) => accumulator + currenValue, 0);
+    let summe = array.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     console.log(summe);
 };
