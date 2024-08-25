@@ -28,6 +28,7 @@ function vectorAdd(vector1,vector2, result){
 vectorAdd(vector1,vector2, result);
 
 
+//Geht das so überhaupt?: 
 // for (let i = 0; i < numberOfElements1; i++){
 //     result[i] = vector1[i] + vector2[i];
 // };
