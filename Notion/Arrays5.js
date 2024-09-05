@@ -30,10 +30,12 @@ function vectorTask(vector1,vector2, operator){
 
 function calculate(){
     let result = [];
-    let vector1 = inputToVector("vector1");
-    let vector2 = inputToVector("vector2");
-    document.getElementById("result").innerText = "BlaBlaBla";
-    let operator = prompt("Gib an, welcher mathematische Operator (+, -, *, /) genutzt werden soll");
+    // let vector1 = inputToVector("vector1");
+    // let vector2 = inputToVector("vector2");
+    // document.getElementById("result").innerText = "BlaBlaBla";
+    // let operator = prompt("Gib an, welcher mathematische Operator (+, -, *, /) genutzt werden soll");
+    vector1.value = inputToVector();
+    vector2.value = inputToVector();
     if (operator === "+") {
         for (let i = 0; i < vector1.length; i++){
             result[i] = vector1[i] + vector2[i];
@@ -51,6 +53,13 @@ function calculate(){
         console.log("Eine Division durch Null ist nicht erlaubt!!!");
     };
     alert(result);
+};
+
+function createVectorAndOperator(){
+    let vector1 = inputToVector("vector1");
+    let vector2 = inputToVector("vector2");
+    document.getElementById("result").innerText = "";
+    let operator = prompt("Gib an, welcher mathematische Operator (+, -, *, /) genutzt werden soll");
 };
 
 function isVectorInFormat(input){
@@ -77,6 +86,8 @@ function createVector(){
     }
    return vector; 
 }
+
+
 
 
 
