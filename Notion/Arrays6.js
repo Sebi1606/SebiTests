@@ -29,7 +29,8 @@ let inputString = createString();
 
 if (checkFormat(inputString)) { 
     parseVector(inputString);   
-}
+};
+
 
 
 
