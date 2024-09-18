@@ -26,10 +26,39 @@ function isPrimeNumber(number){
 
 //Challenge 2: Vektorrechner:
 
-function calculateVectors(vectorA, operation, vectorB) {
-  console.log(vectorA, operation, vectorB);
-  return [1, 2, 3, 4];
+function calculateVectors() {
+  let vectorA = document.getElementById("vector-a").value.split(",").map(Number);
+  let vectorB = document.getElementById("vector-b").value.split(",").map(Number);
+  let operation = document.getElementById("vector-operator").value.trim();
+  if (vectorA.length !== vectorB.length) {
+    alert("Beide Vektoren müssen die gleiche Anzahl von Elementen haben!");
+    return;
+  }
+  let result = [];
+  for (let i = 0; i < vectorA.length; i++) {
+    if (operation == "+") {
+      result.push(vectorA[i] + vectorB[i]);
+    } else if (operation == "-") {
+      result.push(vectorA[i] - vectorB[i]);
+    } else if (operation == "*") {
+      result.push(vectorA[i] * vectorB[i]);
+    } else if (operation == "/") {
+      if (vectorB[i] !== 0) {
+        result.push(vectorA[i] / vectorB[i]);
+      } else {
+        alert("Division durch 0 ist nicht erlaubt!");
+        return;
+      }
+    } else {
+      alert("Ungültiger Operator! Bitte +, -, *, / verwenden.");
+      return;
+    }
+  }
+  document.getElementById("vector-result").textContent = result.join(", ");
+  return result;
 }
+
+
 
 //Challenge 3: Matrixrechner:
 

@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <h1>Das soll Array6 sein</h1>
-<div>Hier sollen 2 Strings entgegengenommen werden, dann in Arrays umgewandelt werden, 
-    dann miteinander verrechnet werden und zum Schluss soll das Ergebnis als Array ausgegeben werden</div>
+<div>Hier soll 1 String entgegengenommen werden und dann in ein Array umgewandelt werden.</div>
 <div>
-    <button onclick = "showInput()">Klicke für die Eingabefelder</button>
+    <button onclick = "showInput()">Click for inputfield</button>
+    <button onclick="checkFormat(string)">Check the format</button>
+    <button onclick="parseVector(string)">Convert string to Array</button>
 </div>
 <div id="inputField" style="display: none;">
     <p><input type="text" placeholder="inputField1"></p>
-    <p><input type="text" placeholder="inputField2"></p>
 </div>
 <script>
     function showInput(){
     let showInputField = document.getElementById("inputField");
     inputField.style.display = "block";
     };
+
+    function checkFormat(string){
+    let anyNumbers = /^(-?\d+(\.\d+)?)(,(-?\d+(\.\d+)?))*$/;
+
+    if (anyNumbers.test(string)) {
+        alert("Die Eingabe ist gültig.");
+        console.log("Eingabe:", string);
+        return true;
+    } else {
+        alert("Der eingegebene String ist nicht gültig!");
+        return false;
+    };
+    
+    alert(string);
+};
+
+function parseVector(string){
+    let array = string.split(",");  
+    console.log("Array:", array);
+    return array;
+};
 </script>
