@@ -47,11 +47,11 @@ function calculateVectors() {
         result.push(vectorA[i] / vectorB[i]);
       } else {
         alert("Division durch 0 ist nicht erlaubt!");
-        return;
+        return "Rechnung fehlerhaft";
       }
     } else {
       alert("Ungültiger Operator! Bitte +, -, *, / verwenden.");
-      return;
+      return "Rechnung fehlerhaft";
     }
   }
   document.getElementById("vector-result").textContent = result.join(", ");
