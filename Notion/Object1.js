@@ -1,15 +1,34 @@
 //Calculater in new with classes:
 
-class vector {
-    constructor(name, value);
-    this.name = name;
-    this.value = value;
+class Vector {
+    constructor (name, values) {
+        this.name = name;
+        this.values = values;
+    };
+    add(...vectors){
+        let vectorLength = this.values.length;
+        for (let v of vectors){
+            if( vectors.values.length !== vectorLength){
+                alert("Falsche Eingabe der Vektoren");
+            };
+        };
+        let resultValues = [...this.values];
+        let numberOfVectors = parseFloat(prompt("Wie viele Vektoren?"));
+        for (let v of Vector) {
+            for (let i = 0; i < numberOfVectors; i++){
+                resultValues[i] += vectors.values[i];
+            };
+        };
+        return new Vector ('Summe', resultValues);    
+    };
 };
+let v1 = new Vector("Vector 1", [1,2,3]);
+let v2 = new Vector("Vector 2", [4,5,6]);
+let v3 = new Vector("Vector 1", [7,8,9]); 
 
-
-
-
-
+let result = v1.add(v2,v3);
+console.log(result);
+alert(result);
 
 
 
